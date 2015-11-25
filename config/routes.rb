@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   namespace :api do
     resources :events, only: [:index]
+    resources :venues , only: [:index] 
   end
 
   # Example of regular route:
