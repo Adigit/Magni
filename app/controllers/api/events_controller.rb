@@ -1,13 +1,10 @@
 class Api::EventsController < ApplicationController
 
-  def get_events
+  def index
     url = "https://www.eventbriteapi.com/v3/users/me/owned_events/?token=G5GUSXPTSLQVWWUUQMFZ"
-    conn = Faraday.new(url: url)
-    response = conn.get
-    @json = JSON.parse(response.body)
-    @
-    Event.create()
+    #url = params[:url]
+    service = EventService.new(url)
+    service.create_records
+    @response = service.response
   end
-json.each do |element|
-end
 end
