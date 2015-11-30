@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   namespace :api do
-    resources :events, only: [:index]
-    resources :venues , only: [:index] 
+    resources :shows, only: [:index,:show]
+    resources :venues, only: [:show]
   end
 
   # Example of regular route:

@@ -38,7 +38,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails'
+  gem 'json_spec'
   gem 'pry'
+  gem 'rails_refactor'
 end
 
 group :development do

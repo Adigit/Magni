@@ -8,9 +8,7 @@ class JsonDataService
   def get_response
     if @response.nil?
       conn = Faraday.new(url: @url)
-      puts "---------------------"
       response = conn.get
-      puts "====================="
       @response = JSON.parse(response.body)
     end
     @response
@@ -18,15 +16,12 @@ class JsonDataService
 
     def create_event_records
     @response ||= get_response
-    binding.pry
-    @response["events"].each do |event|
-      Event.where(name: event["name"]["text"], event_date: event["start"]["utc"].to_datetime).first_or_create
-    end
+      Show.where(sid: @response['show']['id'],show_date: @response['show']['show_time'].to_datetime).first_or_create
   end
 
   def create_venue_records
     @response ||= get_response
-    venue = @response["show"]["venue"]
+    venue = @response["venue"]
     Venue.where(name: venue["name"], address: venue["address"], capacity: venue["capacity"] ).first_or_create if venue.present?
   end
 end
