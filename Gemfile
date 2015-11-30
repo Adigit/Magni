@@ -40,6 +40,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'json_spec'
   gem 'pry'
+  gem 'rails_refactor'
 end
 
 group :development do
