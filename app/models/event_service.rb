@@ -8,9 +8,7 @@ class EventService
   def get_response
     if @response.nil?
       conn = Faraday.new(url: @url)
-      puts "---------------------"
       response = conn.get
-      puts "====================="
       @response = JSON.parse(response.body)
     end
     @response
@@ -18,9 +16,6 @@ class EventService
 
   def create_records
     @response ||= get_response
-    binding.pry
-    @response["events"].each do |event|
-      Event.where(name: event["name"]["text"], event_date: event["start"]["utc"].to_datetime).first_or_create
-    end
+      Show.where(sid: @response['show']['id'],show_date: @response['show']['show_time'].to_datetime).first_or_create
   end
 end

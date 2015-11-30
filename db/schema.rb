@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124103726) do
+ActiveRecord::Schema.define(version: 20151130064024) do
 
-  create_table "events", force: :cascade do |t|
+  create_table "shows", force: :cascade do |t|
     t.string   "name"
     t.integer  "reservation_allowed"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.datetime "event_date"
+    t.datetime "show_date"
+    t.integer  "sid"
+    t.integer  "v_id"
   end
 
 end
